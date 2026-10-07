@@ -1,0 +1,35 @@
+{
+  "name": "overnight-digest",
+  "version": "0.1.0",
+  "description": "A morning digest of everything that shipped across your repos and deploys overnight.",
+  "type": "module",
+  "license": "MIT",
+  "author": "ysta32",
+  "repository": { "type": "git", "url": "git+https://github.com/ysta32/overnight.git" },
+  "homepage": "https://github.com/ysta32/overnight",
+  "bin": { "overnight": "dist/cli.js" },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
+  "files": ["dist", "schema", "README.md"],
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "tsup",
+    "prepare": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "tsc --noEmit",
+    "site": "node dist/cli.js demo --out public",
+    "vercel-build": "npm run build && npm run site"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.132.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.0"
+  }
+}
